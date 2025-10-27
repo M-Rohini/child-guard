@@ -1,0 +1,108 @@
+{
+  "shelters": [
+    {
+      "name": "Bal Seva Ashram",
+      "type": "emergency",
+      "location": "Mumbai, Maharashtra",
+      "address": "123 Main Street, Andheri East, Mumbai - 400069",
+      "contact": "+91-9876543210",
+      "capacity": 50,
+      "currentOccupancy": 32,
+      "description": "24/7 emergency shelter for children in crisis situations",
+      "services": ["Emergency Shelter", "Food", "Medical Care", "Counseling"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Child Protection Home",
+      "type": "long_term",
+      "location": "Delhi, NCR",
+      "address": "45 Child Care Center, Saket, New Delhi - 110017",
+      "contact": "+91-9876543211",
+      "capacity": 75,
+      "currentOccupancy": 60,
+      "description": "Long-term care facility for orphaned and abandoned children",
+      "services": ["Long-term Care", "Education", "Vocational Training", "Healthcare"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Family Support Center",
+      "type": "family",
+      "location": "Bangalore, Karnataka",
+      "address": "78 Family Welfare Road, Koramangala, Bangalore - 560034",
+      "contact": "+91-9876543212",
+      "capacity": 30,
+      "currentOccupancy": 18,
+      "description": "Family reunification and support services",
+      "services": ["Family Counseling", "Temporary Shelter", "Legal Aid", "Rehabilitation"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Emergency Child Shelter",
+      "type": "emergency",
+      "location": "Chennai, Tamil Nadu",
+      "address": "12 Safety Lane, T Nagar, Chennai - 600017",
+      "contact": "+91-9876543213",
+      "capacity": 40,
+      "currentOccupancy": 25,
+      "description": "Immediate shelter for children in abusive situations",
+      "services": ["Emergency Protection", "Crisis Intervention", "Medical Aid", "Legal Support"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Hope Children's Home",
+      "type": "long_term",
+      "location": "Hyderabad, Telangana",
+      "address": "34 Hope Street, Banjara Hills, Hyderabad - 500034",
+      "contact": "+91-9876543214",
+      "capacity": 60,
+      "currentOccupancy": 45,
+      "description": "Long-term residential care with educational support",
+      "services": ["Residential Care", "School Education", "Skill Development", "Healthcare"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Women & Child Protection Center",
+      "type": "family",
+      "location": "Kolkata, West Bengal",
+      "address": "56 Protection Road, Salt Lake, Kolkata - 700091",
+      "contact": "+91-9876543215",
+      "capacity": 35,
+      "currentOccupancy": 28,
+      "description": "Comprehensive support for women and children in distress",
+      "services": ["Crisis Shelter", "Legal Assistance", "Counseling", "Rehabilitation"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Rapid Response Shelter",
+      "type": "emergency",
+      "location": "Pune, Maharashtra",
+      "address": "89 Quick Help Road, Kothrud, Pune - 411038",
+      "contact": "+91-9876543216",
+      "capacity": 25,
+      "currentOccupancy": 15,
+      "description": "Immediate response shelter for emergency situations",
+      "services": ["24/7 Emergency", "Medical Care", "Police Coordination", "Temporary Stay"],
+      "verified": true,
+      "available": true
+    },
+    {
+      "name": "Children's Rehabilitation Home",
+      "type": "long_term",
+      "location": "Ahmedabad, Gujarat",
+      "address": "23 Care Street, Navrangpura, Ahmedabad - 380009",
+      "contact": "+91-9876543217",
+      "capacity": 55,
+      "currentOccupancy": 40,
+      "description": "Rehabilitation and long-term care for traumatized children",
+      "services": ["Trauma Care", "Education", "Psychological Support", "Life Skills"],
+      "verified": true,
+      "available": true
+    }
+  ]
+}

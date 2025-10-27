@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            <a href="index.html" class="btn btn-secondary">← Back to Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+                <h2>Create Child-Guard Account</h2>
+                <div id="signupError" class="alert alert-danger" style="display: none;"></div>
+                <div id="signupSuccess" class="alert alert-success" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required minlength="6">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupAge">Age</label>
+                    <input type="number" id="signupAge" min="1" max="100" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupUserType">I am a:</label>
+                    <select id="signupUserType" required>
+                        <option value="">Select your role</option>
+                        <option value="child">Child (Under 18)</option>
+                        <option value="parent">Parent/Guardian</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupLocation">Location (City, State)</label>
+                    <input type="text" id="signupLocation" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                
+                <p style="text-align: center;">
+                    Already have an account? 
+                    <a href="login.html" style="color: #667eea;">Login here</a>
+                </p>
+            </form>
+        </div>
+    </main>
+    <script>
+        console.log('=== SIGNUP PAGE DEBUG ===');
+
+        async function handleSignup(event) {
+            event.preventDefault();
+            event.stopPropagation(); // Add this to prevent event bubbling
+            
+            console.log('🔄 Signup form submitted');
+            
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const age = document.getElementById('signupAge').value;
+            const userType = document.getElementById('signupUserType').value;
+            const location = document.getElementById('signupLocation').value;
+            
+            console.log('📝 Form data:', { name, email, age, userType, location });
+
+            const errorDiv = document.getElementById('signupError');
+            const successDiv = document.getElementById('signupSuccess');
+
+            // Hide previous messages
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            // Basic validation
+            if (!name || !email || !password || !age || !userType || !location) {
+                showSignupError('Please fill in all fields');
+                return;
+            }
+
+            if (password.length < 6) {
+                showSignupError('Password must be at least 6 characters long');
+                return;
+            }
+
+            if (userType === 'child' && (age < 5 || age > 17)) {
+                showSignupError('Children must be between 5-17 years old');
+                return;
+            }
+
+            if ((userType === 'parent' || userType === 'professional') && age < 18) {
+                showSignupError('Parents and professionals must be 18 years or older');
+                return;
+            }
+
+            try {
+                console.log('🚀 Making signup request to backend...');
+                
+                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password,
+                        age: parseInt(age),
+                        userType: userType,
+                        location: location
+                    })
+                });
+
+                console.log('📨 Response status:', response.status);
+                
+                const data = await response.json();
+                console.log('📩 Response data:', data);
+
+                if (response.ok) {
+                    // Save token and user data
+                    localStorage.setItem('safeguard_token', data.token);
+                    localStorage.setItem('safeguard_user', JSON.stringify(data.user));
+                    
+                    // Show success message
+                    successDiv.textContent = data.message + ' Redirecting...';
+                    successDiv.style.display = 'block';
+                    
+                    console.log('✅ User created successfully:', data.user);
+                    
+                    // Redirect to appropriate page based on role
+                    setTimeout(() => {
+                        if (data.user.role === 'child') {
+                            window.location.href = 'journal.html';
+                        } else {
+                            window.location.href = 'dashboard.html';
+                        }
+                    }, 2000);
+                    
+                } else {
+                    console.error('❌ Signup failed:', data.message);
+                    showSignupError(data.message || 'Signup failed');
+                }
+            } catch (error) {
+                console.error('💥 Signup error:', error);
+                showSignupError('Network error: ' + error.message);
+            }
+        }
+
+        function showSignupError(message) {
+            const errorDiv = document.getElementById('signupError');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            console.error('❌ Error shown:', message);
+        }
+
+        // Prevent any other form submissions
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Signup page initialized');
+            
+            const form = document.getElementById('signupForm');
+            if (form) {
+                form.addEventListener('submit', handleSignup);
+            }
+        });
+    </script>
+
+    <!--<script src="js/main.js"></script>
+    <script src="js/auth.js"></script> -->
+</body>
+</html>

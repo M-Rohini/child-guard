@@ -1,0 +1,182 @@
+[
+  {
+    "question": "Hi",
+    "answer": "Hello! How can I help you with child safety today?",
+    "type": "greeting"
+  },
+  {
+    "question": "Hello",
+    "answer": "Hi there! How can I assist you regarding child protection?",
+    "type": "greeting"
+  },
+  {
+    "question": "Good morning",
+    "answer": "Good morning! How can I help you stay safe today?",
+    "type": "greeting"
+  },
+  {
+    "question": "Hey there",
+    "answer": "Hey! What would you like to know about child safety?",
+    "type": "greeting"
+  },
+  {
+    "question": "Good evening",
+    "answer": "Good evening! How can I assist you in ensuring child safety?",
+    "type": "greeting"
+  },
+  {
+    "question": "How are you?",
+    "answer": "I am fine! I am here to help you with child protection queries.",
+    "type": "greeting"
+  },
+  {
+    "question": "Who can I call?",
+    "answer": "You can call the child helpline number: 1098 for immediate assistance.",
+    "type": "emergency"
+  },
+  {
+    "question": "What's the child helpline number?",
+    "answer": "The child helpline number in India is 1098. Call immediately if needed.",
+    "type": "emergency"
+  },
+  {
+    "question": "Give me the emergency contact for children",
+    "answer": "For emergencies, call 1098 (child helpline) or your local authorities.",
+    "type": "emergency"
+  },
+  {
+    "question": "I need help urgently",
+    "answer": "Please call 1098 immediately for urgent child safety assistance.",
+    "type": "emergency"
+  },
+  {
+    "question": "How do I report abuse?",
+    "answer": "You can report abuse by contacting the child helpline 1098 or local authorities.",
+    "type": "legal"
+  },
+  {
+    "question": "I want to file a complaint",
+    "answer": "You can file a complaint by reaching out to the child helpline 1098 or visiting your local police station.",
+    "type": "legal"
+  },
+  {
+    "question": "Where should I report child abuse?",
+    "answer": "Report child abuse to 1098 (child helpline) or the nearest police station.",
+    "type": "legal"
+  },
+  {
+    "question": "How to complain about child violence?",
+    "answer": "Contact 1098 or visit the local child welfare office to file a complaint.",
+    "type": "legal"
+  },
+  {
+    "question": "Who should I call to report abuse?",
+    "answer": "Call 1098 (child helpline) for immediate assistance in reporting abuse.",
+    "type": "legal"
+  },
+  {
+    "question": "Tell me about child protection laws",
+    "answer": "Child protection laws in India include the POCSO Act, Juvenile Justice Act, and others to ensure safety.",
+    "type": "legal"
+  },
+  {
+    "question": "What age is covered under POCSO?",
+    "answer": "POCSO applies to children below 18 years of age in India.",
+    "type": "legal"
+  },
+  {
+    "question": "Is POCSO applicable in India?",
+    "answer": "Yes, the Protection of Children from Sexual Offences (POCSO) Act is applicable across India.",
+    "type": "legal"
+  },
+  {
+    "question": "Who is protected under POCSO?",
+    "answer": "All children below 18 years are protected under the POCSO Act in India.",
+    "type": "legal"
+  },
+  {
+    "question": "What does POCSO mean?",
+    "answer": "POCSO stands for Protection of Children from Sexual Offences Act.",
+    "type": "legal"
+  },
+  {
+    "question": "Is there a law to protect children?",
+    "answer": "Yes, laws like POCSO, Juvenile Justice Act, and others protect children from abuse and exploitation.",
+    "type": "legal"
+  },
+  {
+    "question": "Tell me about the POCSO Act",
+    "answer": "The POCSO Act protects children from sexual offences and provides procedures for reporting and prosecuting crimes against children.",
+    "type": "legal"
+  },
+  {
+    "question": "What is POCSO?",
+    "answer": "POCSO is the Protection of Children from Sexual Offences Act in India, aimed at safeguarding children.",
+    "type": "legal"
+  },
+  {
+    "question": "How to stay safe online?",
+    "answer": "Never share personal information with strangers and always use strong passwords.",
+    "type": "awareness"
+  },
+  {
+    "question": "What games help children learn about safety?",
+    "answer": "You can use interactive safety games like 'Be Safe Online' or 'Child Safety Quiz'.",
+    "type": "awareness"
+  },
+  {
+    "question": "How to avoid cyberbullying?",
+    "answer": "Do not respond to strangers online, report bullying to a trusted adult, and use privacy settings.",
+    "type": "awareness"
+  },
+  {
+    "question": "What should I do if I feel unsafe?",
+    "answer": "Always talk to a trusted adult, and if urgent, call 1098 for immediate help.",
+    "type": "awareness"
+  },
+  {
+    "question": "How can parents ensure child safety?",
+    "answer": "Monitor online activity, educate children about risks, and maintain open communication.",
+    "type": "awareness"
+  },
+
+  {"question": "hi", "answer": "Hello! How can I help you with child safety today?", "type": "greeting"},
+  {"question": "hello", "answer": "Hi there! How can I assist you regarding child protection?", "type": "greeting"},
+  {"question": "hey", "answer": "Hey! What would you like to know about child safety?", "type": "greeting"},
+  {"question": "good morning", "answer": "Good morning! How can I help you stay safe today?", "type": "greeting"},
+  {"question": "good evening", "answer": "Good evening! How can I assist you in ensuring child safety?", "type": "greeting"},
+  {"question": "how are you?", "answer": "I am fine! I am here to help you with child protection queries.", "type": "greeting"},
+  
+  {"question": "i need help", "answer": "Please call 1098 for urgent child safety assistance or tell me your issue.", "type": "emergency"},
+  {"question": "i wanna make a complaint", "answer": "You can file a complaint by reaching out to 1098 or your local police station.", "type": "legal"},
+  {"question": "i want to report abuse", "answer": "You can report abuse to 1098 (child helpline) or visit the nearest police station.", "type": "legal"},
+  {"question": "who do i call if a child is in danger?", "answer": "Call 1098 immediately for urgent child safety assistance.", "type": "emergency"},
+  {"question": "give me the emergency contact", "answer": "The child helpline number is 1098.", "type": "emergency"},
+  {"question": "how do i report child abuse?", "answer": "Contact 1098 or your local authorities to report child abuse.", "type": "legal"},
+  {"question": "where should i report child abuse?", "answer": "Report abuse to 1098 or the nearest child welfare office.", "type": "legal"},
+  {"question": "what to do if a child is being bullied?", "answer": "Report it to a trusted adult or use child protection resources online.", "type": "awareness"},
+  
+  {"question": "tell me about pocso", "answer": "POCSO stands for Protection of Children from Sexual Offences Act, which protects children under 18.", "type": "legal"},
+  {"question": "what age does pocso cover?", "answer": "POCSO covers all children below 18 years of age.", "type": "legal"},
+  {"question": "is pocso applicable in india?", "answer": "Yes, the POCSO Act is applicable throughout India.", "type": "legal"},
+  {"question": "who is protected under pocso?", "answer": "All children under 18 years are protected under the POCSO Act.", "type": "legal"},
+  {"question": "is there a law to protect children?", "answer": "Yes, laws like POCSO and the Juvenile Justice Act protect children.", "type": "legal"},
+  {"question": "what is pocso?", "answer": "POCSO is the Protection of Children from Sexual Offences Act in India.", "type": "legal"},
+  
+  {"question": "how can i stay safe online?", "answer": "Never share personal information with strangers and always use strong passwords.", "type": "awareness"},
+  {"question": "what games help children learn about safety?", "answer": "Interactive safety games like 'Be Safe Online' or 'Child Safety Quiz' are good for learning.", "type": "awareness"},
+  {"question": "how to avoid cyberbullying?", "answer": "Do not respond to strangers online, report bullying to a trusted adult, and use privacy settings.", "type": "awareness"},
+  {"question": "what should i do if i feel unsafe?", "answer": "Always talk to a trusted adult, and if urgent, call 1098.", "type": "awareness"},
+  {"question": "how can parents ensure child safety?", "answer": "Monitor online activity, educate children about risks, and maintain open communication.", "type": "awareness"},
+  {
+    "question": "good touch and bad touch",
+    "answer": "It’s painful that children must learn this so early — a good touch brings warmth and care, but a bad touch steals trust and leaves behind silent tears. Always speak up, no child should carry that pain alone.",
+    "type": "grief"
+  },
+  {
+    "question": "legal right of children",
+    "answer": "It’s heartbreaking that children still need to fight for what should be theirs by birth — safety, love, and dignity. Laws protect them, but real change begins when every heart listens to their unspoken cries.",
+    "type": "grief"
+  }
+]
+

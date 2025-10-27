@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="assesment.html">Assessment</a></li>
+                <li><a href="professionals.html">Professionals</a></li>
+                <li><a href="funding.html" class="active">Support</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="user-menu">
+                <span id="welcomeText">Welcome, User!</span>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <h1>Your Safety Dashboard</h1>
+                <span id="dashboardWelcome">Welcome back!</span>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>📝 Daily Journal</h3>
+                    <p>Express your thoughts and feelings safely.</p>
+                    <a href="journal.html" class="btn btn-primary">Write Entry</a>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>🔍 Safety Assessment</h3>
+                    <p>Take a confidential safety assessment.</p>
+                    <a href="assesment.html" class="btn btn-primary">Start Assessment</a>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>👨‍⚕️ Professional Help</h3>
+                    <p>Connect with verified professionals.</p>
+                    <a href="professionals.html" class="btn btn-primary">Find Help</a>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>🏠 Safe Shelters</h3>
+                    <p>Find nearby safe accommodation.</p>
+                    <a href="shelters.html" class="btn btn-primary">Find Shelters</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="chatbotContainer">
+        <!-- Minimized Chatbot -->
+        <div id="chatbotMinimized" onclick="toggleChatbot()">
+            <div class="chatbot-logo">🤖</div>
+            <div class="chatbot-text"></div>
+            <div id="chatbotNotification" style="display: none;">0</div>
+        </div>
+
+        <!-- Expanded Chatbot -->
+        <div id="chatbotExpanded" style="display: none;">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-header-logo">🤖</div>
+                    <div class="chatbot-header-text">
+                        <h3>Child Safety Assistant</h3>
+                        <p>Online 24/7</p>
+                    </div>
+                </div>
+                <button id="chatbotClose" onclick="toggleChatbot()">×</button>
+            </div>
+
+            <div id="chatbotMessages"></div>
+
+            <div id="quickResponses"></div>
+
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeyPress(event)">
+                <button id="chatbotSend" onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/chat.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

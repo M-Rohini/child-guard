@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Resources - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="assesment.html">Assessment</a></li>
+                <li><a href="professionals.html">Professionals</a></li>
+                <li><a href="funding.html" class="active">Support</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <span id="welcomeText">Welcome, User!</span>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div style="padding: 2rem; background: white; min-height: calc(100vh - 80px);">
+            <h1>Educational Resources</h1>
+            <p>Learn about child safety, POCSO laws, and abuse prevention.</p>
+            
+            <div class="features-grid" style="margin-top: 2rem;">
+                <div class="feature-card">
+                    <h3>Child Safety Guidelines</h3>
+                    <p>Age-appropriate safety rules and guidelines for children and teenagers.</p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>Personal safety boundaries</li>
+                        <li>Safe vs unsafe touch</li>
+                        <li>Online safety rules</li>
+                        <li>When and how to seek help</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>POCSO Act Information</h3>
+                    <p>Understanding the Protection of Children from Sexual Offences Act.</p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>What constitutes sexual offenses</li>
+                        <li>Legal protections for children</li>
+                        <li>Reporting procedures</li>
+                        <li>Rights of the child victim</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>For Parents & Guardians</h3>
+                    <p>Resources to help adults protect children and recognize signs of abuse.</p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>Warning signs of abuse</li>
+                        <li>How to talk to children</li>
+                        <li>Creating safe environments</li>
+                        <li>Support for families</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Emergency Contacts</h3>
+                    <p>Important helpline numbers and emergency contacts.</p>
+                    <div style="text-align: left; margin: 1rem 0;">
+                        <p><strong>Childline India:</strong> 1098</p>
+                        <p><strong>Women Helpline:</strong> 181</p>
+                        <p><strong>Police Emergency:</strong> 100</p>
+                        <p><strong>Emergency Services:</strong> 108</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <div id="chatbotContainer">
+        <!-- Minimized Chatbot -->
+        <div id="chatbotMinimized" onclick="toggleChatbot()">
+            <div class="chatbot-logo">🤖</div>
+            <div class="chatbot-text"></div>
+            <div id="chatbotNotification" style="display: none;">0</div>
+        </div>
+
+        <!-- Expanded Chatbot -->
+        <div id="chatbotExpanded" style="display: none;">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-header-logo">🤖</div>
+                    <div class="chatbot-header-text">
+                        <h3>Child Safety Assistant</h3>
+                        <p>Online 24/7</p>
+                    </div>
+                </div>
+                <button id="chatbotClose" onclick="toggleChatbot()">×</button>
+            </div>
+
+            <div id="chatbotMessages"></div>
+
+            <div id="quickResponses"></div>
+
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeyPress(event)">
+                <button id="chatbotSend" onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/chat.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

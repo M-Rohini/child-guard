@@ -1,0 +1,131 @@
+<!-- Your existing HTML remains exactly the same -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            <a href="index.html" class="btn btn-secondary">← Back to Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <form class="auth-form" onsubmit="handleLogin(event)">
+                <h2>Login to Child-Guard</h2>
+                <div id="loginError" class="alert alert-danger" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userType">I am a:</label>
+                    <select id="userType" required>
+                        <option value="">Select your role</option>
+                        <option value="child">Child (Under 18)</option>
+                        <option value="parent">Parent/Guardian</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Login</button>
+                
+                <p style="text-align: center;">
+                    Don't have an account? 
+                    <a href="signup.html" style="color: #667eea;">Sign up here</a>
+                </p>
+            </form>
+        </div>
+    </main>
+    <script>
+        // Login function
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const userType = document.getElementById('userType').value;
+            const errorDiv = document.getElementById('loginError');
+
+            errorDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        userType: userType
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('safeguard_token', data.token);
+                    localStorage.setItem('safeguard_user', JSON.stringify(data.user));
+                    
+                    alert('✅ Login successful!');
+                    
+                    if (data.user.role === 'child') {
+                        window.location.href = 'journal.html';
+                    } else {
+                        window.location.href = 'dashboard.html';
+                    }
+                } else {
+                    errorDiv.textContent = data.message || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Network error. Please check if server is running.';
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        // Quick test buttons (add these to your HTML if you want)
+        function quickTestLogin(role) {
+            const testUsers = {
+                'child': { email: 'child@test.com', password: 'test123' },
+                'parent': { email: 'parent@test.com', password: 'test123' },
+                'professional': { email: 'doctor@test.com', password: 'test123' }
+            };
+            
+            document.getElementById('loginEmail').value = testUsers[role].email;
+            document.getElementById('loginPassword').value = testUsers[role].password;
+            document.getElementById('userType').value = role;
+            
+            // Auto-submit after 1 second
+            setTimeout(() => {
+                document.querySelector('form').dispatchEvent(new Event('submit'));
+            }, 1000);
+        }
+    </script>
+
+    <!-- Add quick test buttons before the form closing tag -->
+    <div style="text-align: center; margin-top: 20px;">
+        <p>Quick test:</p>
+        <button onclick="quickTestLogin('child')" style="margin: 5px;">Test as Child</button>
+        <button onclick="quickTestLogin('parent')" style="margin: 5px;">Test as Parent</button>
+        <button onclick="quickTestLogin('professional')" style="margin: 5px;">Test as Professional</button>
+    </div>
+</body>
+</html>

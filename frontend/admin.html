@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Child Safety Monitoring</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5;
+        }
+        .admin-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .alert-banner { 
+            background: #ff4757; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 20px;
+            display: none;
+        }
+        .risk-critical { background: #ff4757; color: white; }
+        .risk-high { background: #ffa502; color: white; }
+        .risk-medium { background: #ffd32a; color: #333; }
+        .risk-low { background: #2ed573; color: white; }
+        .entry-card { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px;
+            border-left: 4px solid #ff4757;
+        }
+        .entry-header { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 10px;
+        }
+        .risk-badge { 
+            padding: 3px 8px; 
+            border-radius: 3px; 
+            font-size: 12px; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>🚨 Child Safety Admin Panel</h1>
+        <div id="alertBanner" class="alert-banner">
+            <strong>NEW ALERT:</strong> <span id="alertMessage"></span>
+        </div>
+        
+        <div class="stats">
+            <h3>Flagged Entries (<span id="flaggedCount">0</span>)</h3>
+        </div>
+        
+        <div id="flaggedEntries"></div>
+    </div>
+
+    <script>
+        class AdminPanel {
+            constructor() {
+                this.ws = null;
+                this.connectWebSocket();
+                this.loadFlaggedEntries();
+                setInterval(() => this.loadFlaggedEntries(), 30000); // Refresh every 30 seconds
+            }
+            
+            connectWebSocket() {
+                this.ws = new WebSocket('ws://localhost:5000/ws/admin');
+                
+                this.ws.onopen = () => {
+                    console.log('✅ Connected to admin WebSocket');
+                };
+                
+                this.ws.onmessage = (event) => {
+                    const alert = JSON.parse(event.data);
+                    this.showRealTimeAlert(alert);
+                };
+                
+                this.ws.onclose = () => {
+                    console.log('❌ WebSocket disconnected, reconnecting...');
+                    setTimeout(() => this.connectWebSocket(), 3000);
+                };
+            }
+            
+            showRealTimeAlert(alert) {
+                const banner = document.getElementById('alertBanner');
+                const message = document.getElementById('alertMessage');
+                
+                message.textContent = alert.message;
+                banner.style.display = 'block';
+                
+                // Play alert sound (optional)
+                this.playAlertSound();
+                
+                // Auto-hide after 10 seconds
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 10000);
+                
+                // Refresh the entries list
+                this.loadFlaggedEntries();
+            }
+            
+            playAlertSound() {
+                const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA');
+                // You can replace with a proper alert sound
+            }
+            
+            async loadFlaggedEntries() {
+                try {
+                    const token = localStorage.getItem('admin_token'); // Admin auth token
+                    const response = await fetch('http://localhost:5000/api/journal/admin/flagged', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    
+                    if (response.ok) {
+                        const entries = await response.json();
+                        this.displayFlaggedEntries(entries);
+                    }
+                } catch (error) {
+                    console.error('Error loading flagged entries:', error);
+                }
+            }
+            
+            displayFlaggedEntries(entries) {
+                const container = document.getElementById('flaggedEntries');
+                const count = document.getElementById('flaggedCount');
+                
+                count.textContent = entries.length;
+                
+                if (entries.length === 0) {
+                    container.innerHTML = '<p>No flagged entries at the moment.</p>';
+                    return;
+                }
+                
+                container.innerHTML = entries.map(entry => `
+                    <div class="entry-card">
+                        <div class="entry-header">
+                            <strong>User: ${entry.username}</strong>
+                            <span class="risk-badge risk-${entry.riskLevel.toLowerCase()}">
+                                ${entry.riskLevel} RISK (Score: ${entry.riskScore})
+                            </span>
+                            <small>${new Date(entry.createdAt).toLocaleString()}</small>
+                        </div>
+                        <p><strong>Mood:</strong> ${entry.mood}</p>
+                        <p><strong>Entry:</strong> ${entry.entry}</p>
+                        <button onclick="markAsReviewed('${entry._id}')" class="review-btn">
+                            Mark as Reviewed
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        async function markAsReviewed(entryId) {
+            try {
+                const token = localStorage.getItem('admin_token');
+                const response = await fetch(`http://localhost:5000/api/journal/admin/review/${entryId}`, {
+                    method: 'PATCH',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (response.ok) {
+                    alert('Entry marked as reviewed');
+                    new AdminPanel().loadFlaggedEntries(); // Refresh list
+                }
+            } catch (error) {
+                console.error('Error marking as reviewed:', error);
+            }
+        }
+        
+        // Initialize admin panel
+        document.addEventListener('DOMContentLoaded', () => {
+            new AdminPanel();
+        });
+    </script>
+</body>
+</html>

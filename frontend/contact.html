@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="assesment.html">Assessment</a></li>
+                <li><a href="professionals.html">Professionals</a></li>
+                <li><a href="funding.html" class="active">Support</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+            
+            <div class="user-menu">
+                <span id="userName">Welcome, User!</span>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem; background: white; margin: 2rem auto; max-width: 800px; border-radius: 15px; box-shadow: 0 2px 20px rgba(0,0,0,0.1);">
+            <h1 style="color: #2c3e50; margin-bottom: 1rem;">Contact Safe-Guard</h1>
+            <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">Get in touch with us for support, questions, or assistance.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div class="contact-info">
+                    <h3>🚨 Emergency Contacts</h3>
+                    <div class="contact-item">
+                        <strong>Child Helpline:</strong> <span style="color: #dc3545; font-weight: bold;">1098</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Women Helpline:</strong> <span style="color: #dc3545; font-weight: bold;">181</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Police Emergency:</strong> <span style="color: #dc3545; font-weight: bold;">100</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Child-Guard 24/7:</strong> <span style="color: #007bff; font-weight: bold;">+91-9876543210</span>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem; color: #007bff;">🏢 Office Contact</h3>
+                    <div class="contact-item">
+                        <strong>Email:</strong> support@childguard.org
+                    </div>
+                    <div class="contact-item">
+                        <strong>Address:</strong> 123 Child Protection Center, New Delhi, India - 110001
+                    </div>
+                    <div class="contact-item">
+                        <strong>Working Hours:</strong> 24/7 Emergency Support
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>✉️ Send us a Message</h3>
+                    <form onsubmit="submitContactForm(event)">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select required>
+                                <option value="">Select a subject</option>
+                                <option value="support">Need Support</option>
+                                <option value="report">Report an Issue</option>
+                                <option value="question">General Question</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="partnership">Partnership</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="5" required placeholder="Type your message here..."></textarea>
+                        </div>
+                        
+                        <div class="form-group" style="background: #e8f4fd; padding: 1rem; border-radius: 8px; border-left: 3px solid #007bff;">
+                            <label style="display: flex; align-items: flex-start; font-weight: normal;">
+                                <input type="checkbox" required style="margin-right: 10px; margin-top: 3px;">
+                                <span>I understand this form is for non-emergency contact. For urgent help, I will call emergency numbers listed above.</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1.1rem;">
+                            📤 Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="chatbotContainer">
+        <!-- Chatbot code remains same -->
+        <div id="chatbotMinimized" onclick="toggleChatbot()">
+            <div class="chatbot-logo">🤖</div>
+            <div class="chatbot-text"></div>
+            <div id="chatbotNotification" style="display: none;">0</div>
+        </div>
+
+        <div id="chatbotExpanded" style="display: none;">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-header-logo">🤖</div>
+                    <div class="chatbot-header-text">
+                        <h3>Child Safety Assistant</h3>
+                        <p>Online 24/7</p>
+                    </div>
+                </div>
+                <button id="chatbotClose" onclick="toggleChatbot()">×</button>
+            </div>
+
+            <div id="chatbotMessages"></div>
+
+            <div id="quickResponses"></div>
+
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeyPress(event)">
+                <button id="chatbotSend" onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

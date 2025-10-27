@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Help - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="assesment.html">Assessment</a></li>
+                <li><a href="funding.html" class="active">Support</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="user-menu">
+                <span id="welcomeText">Welcome, User!</span>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div style="padding: 2rem; background: white; min-height: calc(100vh - 80px);">
+            <h1>Find Professional Help</h1>
+            <p>Connect with verified professionals who specialize in child protection and support.</p>
+            
+            <div style="margin: 2rem 0; padding: 1.5rem; background: #f8f9ff; border-radius: 10px;">
+                <h3>Search Filters</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <select id="professionType">
+                        <option value="">All Professionals</option>
+                        <option value="doctor">Doctors</option>
+                        <option value="counselor">Counselors</option>
+                        <option value="lawyer">Lawyers</option>
+                        <option value="social_worker">Social Workers</option>
+                    </select>
+                    <input type="text" id="professionalsLocation" placeholder="Enter your location">
+                    <select id="specialization">
+                        <option value="">All Specializations</option>
+                        <option value="child_psychology">Child Psychology</option>
+                        <option value="trauma_therapy">Trauma Therapy</option>
+                        <option value="family_law">Family Law</option>
+                        <option value="pediatrics">Pediatrics</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="searchProfessionals()">Search</button>
+                </div>
+            </div>
+            
+            <div id="professionalsResults" class="resource-grid">
+                <!-- Professional results will be loaded here -->
+            </div>
+             <div id="professionals" class="page">
+            <div style="padding: 2rem; background: white; min-height: calc(100vh - 80px);">
+                <h1>Find Professional Help</h1>
+                <p>Connect with verified professionals who specialize in child protection and support.</p>
+                
+                <div style="margin: 2rem 0; padding: 1.5rem; background: #f8f9ff; border-radius: 10px;">
+                    <h3>Search Filters</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <select id="professionType">
+                            <option value="">All Professionals</option>
+                            <option value="doctor">Doctors</option>
+                            <option value="counselor">Counselors</option>
+                            <option value="lawyer">Lawyers</option>
+                            <option value="social_worker">Social Workers</option>
+                        </select>
+                        <input type="text" id="professionalsLocation" placeholder="Enter your location">
+                        <select id="specialization">
+                            <option value="">All Specializations</option>
+                            <option value="child_psychology">Child Psychology</option>
+                            <option value="trauma_therapy">Trauma Therapy</option>
+                            <option value="family_law">Family Law</option>
+                            <option value="pediatrics">Pediatrics</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="searchProfessionals()">Search</button>
+                    </div>
+                </div>
+                
+                <div id="professionalsResults" class="resource-grid">
+                    <!-- Professional results will be loaded here -->
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+        <div id="chatbotContainer">
+        <!-- Minimized Chatbot -->
+        <div id="chatbotMinimized" onclick="toggleChatbot()">
+            <div class="chatbot-logo">🤖</div>
+            <div class="chatbot-text"></div>
+            <div id="chatbotNotification" style="display: none;">0</div>
+        </div>
+
+        <!-- Expanded Chatbot -->
+        <div id="chatbotExpanded" style="display: none;">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-header-logo">🤖</div>
+                    <div class="chatbot-header-text">
+                        <h3>Child Safety Assistant</h3>
+                        <p>Online 24/7</p>
+                    </div>
+                </div>
+                <button id="chatbotClose" onclick="toggleChatbot()">×</button>
+            </div>
+
+            <div id="chatbotMessages"></div>
+
+            <div id="quickResponses"></div>
+
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeyPress(event)">
+                <button id="chatbotSend" onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/chat.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/professionals.js"></script>
+</body>
+</html>

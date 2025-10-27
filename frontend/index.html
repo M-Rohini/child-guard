@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child-Guard - Child Protection & Safety Platform</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <span id="welcomeText">Welcome, User!</span>
+                <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Child-Guard</h1>
+                <p>Protecting children through technology, education, and immediate support</p>
+                <div class="hero-buttons">
+                    <a href="signup.html" class="btn btn-primary">Get Started</a>
+                    <a href="resources.html" class="btn btn-secondary">Learn More</a>
+                    <a href="#" class="btn btn-danger" onclick="showEmergencyHelp()">Emergency Help</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <h2>How We Help Protect Children</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Abuse Detection</h3>
+                        <p>AI-powered assessment tools to identify potential abuse situations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>24/7 AI Chatbot</h3>
+                        <p>Always available support chatbot trained on child safety resources.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👨‍⚕️</div>
+                        <h3>Professional Network</h3>
+                        <p>Connect with verified doctors, counselors, and legal experts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚨</div>
+                        <h3>Emergency Support</h3>
+                        <p>Immediate access to police, helplines, and emergency services.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="chatbotContainer">
+        <!-- Minimized Chatbot -->
+        <div id="chatbotMinimized" onclick="toggleChatbot()">
+            <div class="chatbot-logo">🤖</div>
+            <div class="chatbot-text"></div>
+            <div id="chatbotNotification" style="display: none;">0</div>
+        </div>
+
+        <!-- Expanded Chatbot -->
+        <div id="chatbotExpanded" style="display: none;">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-header-logo">🤖</div>
+                    <div class="chatbot-header-text">
+                        <h3>Child Safety Assistant</h3>
+                        <p>Online 24/7</p>
+                    </div>
+                </div>
+                <button id="chatbotClose" onclick="toggleChatbot()">×</button>
+            </div>
+
+            <div id="chatbotMessages"></div>
+
+            <div id="quickResponses"></div>
+
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeyPress(event)">
+                <button id="chatbotSend" onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/chat.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

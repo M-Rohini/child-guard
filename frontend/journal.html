@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal - Child-Guard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="shield-icon">🛡️</div>
+                <span>Child-Guard</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="assesment.html">Assessment</a></li>
+                <li><a href="professionals.html">Professionals</a></li>
+                <li><a href="funding.html" class="active">Support</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="user-menu">
+                <span id="welcomeText">Welcome, User!</span>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>My Daily Journal</h2>
+        <p class="subtitle">Express your thoughts and feelings safely</p>
+
+        <div class="journal-form">
+            <div class="form-group">
+                <label for="journalEntry">How was your day?</label>
+                <textarea id="journalEntry" placeholder="Write about your day, your feelings, or anything you want to share..." rows="6"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>How are you feeling?</label>
+                <div class="mood-selector">
+                    <button class="mood-btn" data-mood="happy">😊 Happy</button>
+                    <button class="mood-btn" data-mood="sad">😢 Sad</button>
+                    <button class="mood-btn" data-mood="angry">😠 Angry</button>
+                    <button class="mood-btn" data-mood="scared">😨 Scared</button>
+                    <button class="mood-btn" data-mood="confused">😕 Confused</button>
+                    <button class="mood-btn" data-mood="neutral">😐 Neutral</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="journalPrivate" checked>
+                    Keep this entry private
+                </label>
+            </div>
+
+            <button id="saveJournal" class="btn btn-primary">Save Entry</button>
+        </div>
+
+        <div id="journalResults" style="display: none;">
+            <div class="risk-assessment">
+                <h3>Analysis Results</h3>
+                <div id="riskLevel" class="risk-low">Low Risk</div>
+                <p id="riskFeedback">Your entry has been analyzed and appears to be normal.</p>
+            </div>
+        </div>
+
+        <div class="journal-entries">
+            <h3>Previous Entries</h3>
+            <div id="entriesList"></div>
+        </div>
+    </main>
+        <div id="chatbotContainer">
+        <!-- Minimized Chatbot -->
+        <div id="chatbotMinimized" onclick="toggleChatbot()">
+            <div class="chatbot-logo">🤖</div>
+            <div class="chatbot-text"></div>
+            <div id="chatbotNotification" style="display: none;">0</div>
+        </div>
+
+        <!-- Expanded Chatbot -->
+        <div id="chatbotExpanded" style="display: none;">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-header-logo">🤖</div>
+                    <div class="chatbot-header-text">
+                        <h3>Child Safety Assistant</h3>
+                        <p>Online 24/7</p>
+                    </div>
+                </div>
+                <button id="chatbotClose" onclick="toggleChatbot()">×</button>
+            </div>
+
+            <div id="chatbotMessages"></div>
+
+            <div id="quickResponses"></div>
+
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeyPress(event)">
+                <button id="chatbotSend" onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/chat.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/journal.js"></script>
+</body>
+</html>
