@@ -127,7 +127,7 @@ const generateToken = (user) => {
         userId: user._id,
         email: user.email,
         role: user.role
-    }, process.env.JWT_SECRET || 'your_jwt_secret_key_here', { 
+    }, process.env.JWT_SECRET || 'childguard_secret_2024', { 
         expiresIn: '7d' 
     });
 };
@@ -337,7 +337,7 @@ app.post('/api/journal/entry', async (req, res) => {
             const authHeader = req.headers['authorization'];
             if (authHeader && authHeader.startsWith('Bearer ')) {
                 const token = authHeader.split(' ')[1];
-                const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret_key_here');
+                const decoded = jwt.verify(token, process.env.JWT_SECRET || 'childguard_secret_2024');
                 
                 // Find user in database
                 const user = await User.findById(decoded.userId);
@@ -638,7 +638,7 @@ app.post('/api/assessment/submit', async (req, res) => {
             const authHeader = req.headers['authorization'];
             if (authHeader && authHeader.startsWith('Bearer ')) {
                 const token = authHeader.split(' ')[1];
-                const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret_key_here');
+                const decoded = jwt.verify(token, process.env.JWT_SECRET || 'childguard_secret_2024');
                 const user = await User.findById(decoded.userId);
                 if (user) {
                     authenticatedUser = {
