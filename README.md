@@ -59,7 +59,7 @@ Protected (Login Required):
 🚀 SETUP INSTRUCTIONS
 1. Install Node.js and MongoDB
 2. Clone Repository:
-   git clone https://github.com/your-username/child-guard.git
+   git clone https://github.com/M-Rohini/child-guard.git
 3. Navigate:
    cd child-guard
 4. Install Dependencies:
